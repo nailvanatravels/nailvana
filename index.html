@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nailvana Travels · Mobile Nail Tech</title>
+  <meta name="description" content="Luxury mobile nail services in Anne Arundel County. Nails that travel to you." />
+  <style>
+    :root{
+      --blush:#F7E7EC; /* soft blush */
+      --blush-200:#F4DADF;
+      --rose:#C07A84;  /* rose accent */
+      --rose-deep:#8E5760; /* deep rose */
+      --ink:#2C2430;  /* elegant near-black */
+      --gold:#DDBAA3; /* soft metallic accent */
+      --white:#FFFFFF;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--blush);color:var(--ink);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";}
+    a{color:var(--rose-deep);text-decoration:none}
+    a:hover{opacity:.85}
+    .container{max-width:1100px;margin:0 auto;padding: clamp(16px, 3vw, 32px);}    
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:20; backdrop-filter:saturate(180%) blur(8px);
+      background: linear-gradient( to bottom, rgba(247,231,236,0.9), rgba(247,231,236,0.6));
+      border-bottom:1px solid rgba(0,0,0,0.06);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:0.5px}
+    .brand .logo{width:40px;height:40px;border-radius:999px;background:radial-gradient(circle at 30% 30%, var(--white), var(--blush-200));display:grid;place-items:center;border:1px solid rgba(0,0,0,0.06)}
+    .brand .logo svg{width:22px;height:22px;fill:var(--rose-deep)}
+    .pill{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:var(--ink);color:var(--white);font-weight:600;box-shadow:0 6px 20px rgba(44,36,48,.18)}
+    .pill svg{width:16px;height:16px;fill:var(--white)}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(135deg, var(--blush-200), var(--white));box-shadow:0 20px 60px rgba(44,36,48,.08);}
+    .hero-inner{display:grid;grid-template-columns:1.2fr 0.8fr;gap:24px;align-items:center;padding:min(7vw,64px)}
+    .kicker{color:var(--rose-deep);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem}
+    h1{font-size: clamp(28px, 5vw, 56px); line-height:1.05;margin:10px 0 14px 0}
+    .subtitle{font-size: clamp(15px, 2vw, 20px); opacity:.85}
+    .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px}
+    .btn{padding:12px 18px;border-radius:14px;font-weight:700;border:1px solid rgba(0,0,0,0.08);background:var(--rose);color:var(--white);box-shadow:0 10px 24px rgba(192,122,132,.28)}
+    .btn.secondary{background:var(--white);color:var(--rose-deep)}
+    .badge{margin-top:14px;display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--white);border:1px solid rgba(0,0,0,.06);font-size:.9rem}
+
+    /* Sections */
+    section{padding: clamp(36px, 6vw, 80px) 0;border-bottom:1px solid rgba(0,0,0,0.06)}
+    section:last-of-type{border-bottom:none}
+    h2{font-size: clamp(22px, 3.6vw, 36px); margin:0 0 16px 0}
+    .lead{opacity:.9;max-width:65ch}
+
+    /* About */
+    .about{display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;align-items:center}
+    .card{background:var(--white);border:1px solid rgba(0,0,0,.06);border-radius:22px;padding:24px;box-shadow:0 14px 36px rgba(44,36,48,.06)}
+
+    /* Services */
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{background:var(--white);border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px;box-shadow:0 10px 28px rgba(44,36,48,.05)}
+    .service h3{margin:2px 0 0 0;font-size:1.05rem}
+    .price{margin-left:auto;font-weight:700;color:var(--rose-deep)}
+    .service p{opacity:.9;margin:0}
+
+    /* Gallery */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .ph{aspect-ratio: 3/4; background:linear-gradient(180deg,var(--blush-200),var(--white));border-radius:16px;border:1px dashed rgba(0,0,0,.12);display:grid;place-items:center;color:var(--rose-deep);font-weight:600}
+
+    /* Contact */
+    .contact-card{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .contact-item{display:flex;align-items:center;gap:12px;padding:16px;border-radius:16px;background:var(--white);border:1px solid rgba(0,0,0,.06)}
+    .contact-item svg{width:20px;height:20px;fill:var(--rose-deep)}
+
+    /* Sticky Floating CTA */
+    .floating{
+      position: fixed; right:16px; bottom:16px; z-index:30;
+      display:flex;gap:10px;flex-direction:column;align-items:flex-end;
+    }
+    .float-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:var(--ink);color:var(--white);font-weight:700;box-shadow:0 16px 40px rgba(44,36,48,.22)}
+
+    /* Footer */
+    footer{padding:28px 0;color:#5a5160;font-size:.95rem}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-inner{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .services{grid-template-columns:1fr 1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .contact-card{grid-template-columns:1fr}
+    }
+    @media (max-width: 560px){
+      .services{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- simple nail-bottle glyph -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2h4v5h-4zM8 8h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2zm1 4h6v6H9v-6z"/></svg>
+        </div>
+        <div>Nailvana Travels</div>
+      </div>
+      <a class="pill" href="https://instagram.com/nailvanatravels" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 .001 10.001A5 5 0 0 0 12 7zm6.5-1.75a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/></svg>
+        Book on Instagram
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div>
+          <div class="kicker">Mobile Nail Tech · Anne Arundel</div>
+          <h1>Luxury nails that travel to you.</h1>
+          <p class="subtitle">Blush‑toned artistry, salon‑quality finish, and on‑location convenience. Serving Pasadena, Glen Burnie, and nearby.</p>
+          <div class="cta">
+            <a class="btn" href="https://instagram.com/nailvanatravels" target="_blank" rel="noopener">Book via Instagram</a>
+            <a class="btn secondary" href="#services">View Services</a>
+          </div>
+          <div class="badge">✨ Hxilo — Mobile Nail Tech (in training)</div>
+        </div>
+        <div class="card" aria-label="Showcase image placeholder">
+          <div style="display:grid;place-items:center;aspect-ratio:1/1;border-radius:18px;background:linear-gradient(135deg,var(--white),var(--blush-200));border:1px dashed rgba(0,0,0,.12);">
+            <div style="text-align:center;padding:18px;color:var(--rose-deep);font-weight:700">Add your nail photo here
+              <div style="font-weight:500;opacity:.75">(Replace with your favorite set)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about">
+        <div>
+          <h2>About Nailvana Travels</h2>
+          <p class="lead">Hi, I'm Hxilo — a mobile nail technician (in training) offering premium on‑site manicures, gel finishes, and custom nail art. I bring a sanitized, professional setup to your home or event and craft clean, long‑lasting nails with a luxury touch.</p>
+          <ul>
+            <li>• Licensed training, clean protocols, and high‑quality products</li>
+            <li>• Flexible weekday evenings & select weekends</li>
+            <li>• Travel within Anne Arundel & nearby areas</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 8px 0">Service Areas</h3>
+          <p style="margin:0 0 8px 0">Pasadena · Glen Burnie · Severna Park · Annapolis · Gambrills</p>
+          <h3 style="margin:16px 0 8px 0">Policies</h3>
+          <p style="margin:0">Travel fee may apply outside local radius. Please arrive polish‑free; late cancellations (<24h) may require a small fee.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2>Services & Pricing</h2>
+      <p class="lead">Transparent, simple menu. Add ons for nail art, removals, and repairs available.</p>
+      <div class="services">
+        <div class="service">
+          <div style="display:flex;align-items:center;gap:10px">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;fill:var(--rose-deep)"><path d="M4 14c0-2.8 2.2-5 5-5s5 2.2 5 5-2.2 5-5 5H6a2 2 0 0 1-2-2v-3zM14 4h4v4h-4z"/></svg>
+            <h3>Classic Manicure</h3>
+            <div class="price">$XX</div>
+          </div>
+          <p>Shape, cuticle care, buff & polish. Clean, glossy finish.</p>
+        </div>
+        <div class="service">
+          <div style="display:flex;align-items:center;gap:10px">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;fill:var(--rose-deep)"><path d="M9 2h6v6H9zM6 10h12v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V10z"/></svg>
+            <h3>Gel Manicure</h3>
+            <div class="price">$XX</div>
+          </div>
+          <p>Long‑lasting gel color with high‑shine. Gentle removal available.</p>
+        </div>
+        <div class="service">
+          <div style="display:flex;align-items:center;gap:10px">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;fill:var(--rose-deep)"><path d="M5 3h4l2 4h8v4H9l-2 4H3z"/></svg>
+            <h3>Custom Nail Art</h3>
+            <div class="price">from $XX</div>
+          </div>
+          <p>French, chrome, decals, or bespoke designs — priced by complexity.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <p class="lead">Swap these placeholders with your best sets. Tip: natural light + clean backgrounds = luxury look.</p>
+      <div class="grid">
+        <div class="ph">Upload Set #1</div>
+        <div class="ph">Upload Set #2</div>
+        <div class="ph">Upload Set #3</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Book & Contact</h2>
+      <div class="contact-card">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.7 11.7 0 0 0 3.7.6 1 1 0 0 1 1 1V20a2 2 0 0 1-2 2C9.6 22 2 14.4 2 5a2 2 0 0 1 2-2h3.4a1 1 0 0 1 1 1c0 1.3.2 2.6.6 3.7a1 1 0 0 1-.24 1l-2.16 2.1z"/></svg>
+          <a href="tel:14104767244">Call/Text: 410‑476‑7244</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 .001 10.001A5 5 0 0 0 12 7zm6.5-1.75a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/></svg>
+          <a href="https://instagram.com/nailvanatravels" target="_blank" rel="noopener">@NailvanaTravels on Instagram</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v1l-10 6L2 7V6a2 2 0 0 1 2-2zm18 6.7V18a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7.3l10 6 10-6z"/></svg>
+          <span>Email (optional)</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="floating">
+    <a class="float-btn" href="https://instagram.com/nailvanatravels" target="_blank" rel="noopener" aria-label="Book via Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 .001 10.001A5 5 0 0 0 12 7zm6.5-1.75a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/></svg>
+      Book on Instagram
+    </a>
+  </div>
+
+  <footer>
+    <div class="container">© 2025 Nailvana Travels · All Rights Reserved</div>
+  </footer>
+</body>
+</html>
